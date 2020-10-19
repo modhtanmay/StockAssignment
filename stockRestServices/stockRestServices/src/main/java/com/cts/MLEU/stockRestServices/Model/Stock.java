@@ -3,33 +3,40 @@ package com.cts.MLEU.stockRestServices.Model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Stock {
 	
 	@Id
-	private int stock_id;
-	private String stock_name;
+	@GeneratedValue
+	private int id;
+	private String name;
 	private double price;
 	private int volume;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
-	public int getStock_id() {
-		return stock_id;
+	public int getId() {
+		return id;
 	}
-	public void setStock_id(int stock_id) {
-		this.stock_id = stock_id;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getStock_name() {
-		return stock_name;
+	public String getName() {
+		return name;
 	}
-	public void setStock_name(String stock_name) {
-		this.stock_name = stock_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public int getVolume() {
@@ -44,19 +51,20 @@ public class Stock {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Stock() {
+	public Stock(int id, String name, double price, int volume, Date date) {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Stock(int stock_id, String stock_name, double price, int volume, Date date) {
-		super();
-		this.stock_id = stock_id;
-		this.stock_name = stock_name;
+		this.id = id;
+		this.name = name;
 		this.price = price;
 		this.volume = volume;
 		this.date = date;
 	}
+	public Stock() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
+		
 	
 
 }

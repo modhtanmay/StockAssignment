@@ -28,35 +28,19 @@ public class StockServiceImpl implements StockService{
 	}
 
 	@Override
-	public Stock findByName(String stock_name) {
+	public Stock addStock(Stock stock) {
 		// TODO Auto-generated method stub
-		return null;
+		return stockDao.save(stock);
 	}
 
 	@Override
-	public Stock findByPriceBetween(double startPrice, double endPrice) {
+	public List<Stock> findByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return stockDao.findByName(name);
 	}
 
-	@Override
-	public Stock findByVolumeBetween(int startVolume, int endVolume) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Stock findByDateBetween(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Stock> getTopFiveStock() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+
 	
 
 }
