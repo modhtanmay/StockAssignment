@@ -59,4 +59,8 @@ public class StockController {
 		return new ResponseEntity<>(stockService.findByDateBetween(new Date(2020-01-01),new Date(2020-12-12)),HttpStatus.OK); 
 	}
 	
+	@GetMapping("/getTopFiveStock")
+	public ResponseEntity<Object> getTopFiveStock(){
+		return new ResponseEntity<>(stockService.findTopFiveStockByPrice(),HttpStatus.OK); 
+	}
 }

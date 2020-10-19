@@ -19,6 +19,7 @@ public class Stock {
 	private String name;
 	private double price;
 	private int volume;
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	public int getId() {

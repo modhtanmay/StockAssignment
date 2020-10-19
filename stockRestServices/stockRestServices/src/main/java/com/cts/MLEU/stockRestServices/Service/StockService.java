@@ -23,7 +23,6 @@ public interface StockService {
 	
 	List<Stock> findByDateBetween(Date startDate,Date endDate);
 	
-//	public List<Stock> getTopFiveStock();
-
+	List<Stock> findTopFiveStockByPrice();
 
 }

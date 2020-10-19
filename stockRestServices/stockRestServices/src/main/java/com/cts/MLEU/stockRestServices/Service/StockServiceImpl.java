@@ -57,6 +57,12 @@ public class StockServiceImpl implements StockService{
 		return stockDao.findByDateBetween(startDate, endDate);
 	}
 
+	@Override
+	public List<Stock> findTopFiveStockByPrice() {
+		// TODO Auto-generated method stub
+		return stockDao.findTopFiveStockByPrice();
+	}
+
 	
 
 	
