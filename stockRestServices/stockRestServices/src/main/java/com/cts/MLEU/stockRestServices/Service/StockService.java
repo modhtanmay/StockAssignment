@@ -14,15 +14,15 @@ public interface StockService {
 	
 	public Stock addStock(Stock stock);
 
-//	
+	
 	List<Stock> findByName(String stock_name);
-//	
-//	public Stock findByPriceBetween(double startPrice,double endPrice);
-//	
-//	public Stock findByVolumeBetween(int startVolume,int endVolume);
-//	
-//	public Stock findByDateBetween(Date startDate,Date endDate);
-//	
+	
+	List<Stock> findByPriceBetween(double startPrice,double endPrice);
+	
+	List<Stock> findByVolumeBetween(int startVolume,int endVolume);
+	
+	List<Stock> findByDateBetween(Date startDate,Date endDate);
+	
 //	public List<Stock> getTopFiveStock();
 
 

@@ -39,6 +39,24 @@ public class StockServiceImpl implements StockService{
 		return stockDao.findByName(name);
 	}
 
+	@Override
+	public List<Stock> findByPriceBetween(double startPrice, double endPrice) {
+		// TODO Auto-generated method stub
+		return stockDao.findByPriceBetween(startPrice,endPrice);
+	}
+
+	@Override
+	public List<Stock> findByVolumeBetween(int startVolume, int endVolume) {
+		// TODO Auto-generated method stub
+		return stockDao.findByVolumeBetween(startVolume, endVolume);
+	}
+
+	@Override
+	public List<Stock> findByDateBetween(Date startDate, Date endDate) {
+		// TODO Auto-generated method stub
+		return stockDao.findByDateBetween(startDate, endDate);
+	}
+
 	
 
 	

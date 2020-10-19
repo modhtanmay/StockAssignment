@@ -1,5 +1,7 @@
 package com.cts.MLEU.stockRestServices.Controller;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -38,4 +40,20 @@ public class StockController {
 	public ResponseEntity<Object> getByName(@PathVariable String name ){
 		return new ResponseEntity<>(stockService.findByName(name),HttpStatus.OK); 
 	}
+	
+	@GetMapping("/getByPriceBetween")
+	public ResponseEntity<Object> getByPriceBetween(){
+		return new ResponseEntity<>(stockService.findByPriceBetween(100.0, 200.0),HttpStatus.OK); 
+	}
+	
+	@GetMapping("/getByVolumeBetween")
+	public ResponseEntity<Object> getByVolumeBetween(){
+		return new ResponseEntity<>(stockService.findByVolumeBetween(100, 200),HttpStatus.OK); 
+	}
+	
+	@GetMapping("/getByDateBetween")
+	public ResponseEntity<Object> getByDateBetween(){
+		return new ResponseEntity<>(stockService.findByDateBetween(new Date(2020-01-01),new Date(2020-12-12)),HttpStatus.OK); 
+	}
+	
 }
