@@ -13,6 +13,10 @@ public interface StockService {
 	public Stock getStockById(int id);
 	
 	public Stock addStock(Stock stock);
+	
+	public Stock updateStock(Stock stock);
+	
+	public void deleteEmployee(int id);
 
 	
 	List<Stock> findByName(String stock_name);

@@ -65,6 +65,20 @@ public class StockServiceImpl implements StockService{
 
 	
 
+	@Override
+	public void deleteEmployee(int id) {
+		// TODO Auto-generated method stub
+		stockDao.deleteById(id);
+	}
+
+	@Override
+	public Stock updateStock(Stock stock) {
+		// TODO Auto-generated method stub
+		return stockDao.save(stock);
+	}
+
+	
+
 	
 
 }
