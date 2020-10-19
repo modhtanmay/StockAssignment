@@ -3,10 +3,8 @@ package com.cts.MLEU.stockRestServices.Controller;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,20 +44,19 @@ public class StockController {
 		return new ResponseEntity<>(stockService.findByName(name), HttpStatus.OK);
 	}
 
-	@GetMapping("/getByPriceBetween")
-	public ResponseEntity<Object> getByPriceBetween() {
-		return new ResponseEntity<>(stockService.findByPriceBetween(100.0, 200.0), HttpStatus.OK);
+	@GetMapping("/getByPriceBetween/{startPrice}/{endPrice}")
+	public ResponseEntity<Object> getByPriceBetween(@PathVariable double startPrice,@PathVariable double endPrice) {
+		return new ResponseEntity<>(stockService.findByPriceBetween(startPrice, endPrice), HttpStatus.OK);
 	}
 
-	@GetMapping("/getByVolumeBetween")
-	public ResponseEntity<Object> getByVolumeBetween() {
-		return new ResponseEntity<>(stockService.findByVolumeBetween(100, 200), HttpStatus.OK);
+	@GetMapping("/getByVolumeBetween/{startVolume}/{endVolume}")
+	public ResponseEntity<Object> getByVolumeBetween(@PathVariable int startVolume,@PathVariable int endVolume) {
+		return new ResponseEntity<>(stockService.findByVolumeBetween(startVolume, endVolume), HttpStatus.OK);
 	}
 
-	@GetMapping("/getByDateBetween")
-	public ResponseEntity<Object> getByDateBetween() {
-		return new ResponseEntity<>(stockService.findByDateBetween(new Date(2020 - 01 - 01), new Date(2020 - 12 - 12)),
-				HttpStatus.OK);
+	@GetMapping("/getByDateBetween/{startDate}/{endDate}")
+	public ResponseEntity<Object> getByDateBetween(@PathVariable("startDate") Date startDate, @PathVariable("endDate") Date endDate) {
+		return new ResponseEntity<>(stockService.findByDateBetween(startDate,endDate),HttpStatus.OK);
 	}
 
 	@GetMapping("/getTopFiveStock")
@@ -68,8 +65,7 @@ public class StockController {
 	}
 	
 	@PutMapping("/updateStock")
-	public ResponseEntity<Object> updateEmployee(@RequestBody Stock stock){
-		// ONE WAY TO UPDATE
+	public ResponseEntity<Object> updateStock(@RequestBody Stock stock){
 		Stock s = stockService.updateStock(stock);
 		if(s!= null)
 			return new ResponseEntity<>(stock,HttpStatus.OK);
