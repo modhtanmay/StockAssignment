@@ -11,7 +11,7 @@ public class Stock {
 	@Id
 	private int stock_id;
 	private String stock_name;
-	private int price;
+	private double price;
 	private int volume;
 	private Date date;
 	public int getStock_id() {
@@ -26,7 +26,7 @@ public class Stock {
 	public void setStock_name(String stock_name) {
 		this.stock_name = stock_name;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
@@ -48,7 +48,7 @@ public class Stock {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Stock(int stock_id, String stock_name, int price, int volume, Date date) {
+	public Stock(int stock_id, String stock_name, double price, int volume, Date date) {
 		super();
 		this.stock_id = stock_id;
 		this.stock_name = stock_name;
