@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cts.MLEU.stockRestServices.Dao.StockDao;
+import com.cts.MLEU.stockRestServices.Dao.StockDetailsDao;
 import com.cts.MLEU.stockRestServices.Model.Stock;
 
 @Service
@@ -14,6 +15,9 @@ public class StockServiceImpl implements StockService{
 
 	@Autowired
 	StockDao stockDao;
+	
+	@Autowired
+	StockDetailsDao stockDetailsDao;
 	
 	@Override
 	public List<Stock> getAllStock() {
@@ -75,6 +79,18 @@ public class StockServiceImpl implements StockService{
 	public Stock updateStock(Stock stock) {
 		// TODO Auto-generated method stub
 		return stockDao.save(stock);
+	}
+
+	@Override
+	public List<Stock> searchByCompName(String compName) {
+		// TODO Auto-generated method stub
+		return stockDao.searchByCompName(compName);
+	}
+
+	@Override
+	public List<Stock> listByCompRanking() {
+		// TODO Auto-generated method stub
+		return stockDao.listByCompRanking();
 	}
 
 	

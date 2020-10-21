@@ -28,5 +28,9 @@ public interface StockService {
 	List<Stock> findByDateBetween(Date startDate,Date endDate);
 	
 	List<Stock> findTopFiveStockByPrice();
+	
+	List<Stock> searchByCompName(String compName);
+	
+	List<Stock> listByCompRanking();
 
 }

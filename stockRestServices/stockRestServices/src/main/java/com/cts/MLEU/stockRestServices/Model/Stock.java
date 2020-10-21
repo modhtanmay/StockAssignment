@@ -1,14 +1,17 @@
 package com.cts.MLEU.stockRestServices.Model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class Stock {
@@ -22,6 +25,10 @@ public class Stock {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
+	
+	@OneToMany(mappedBy = "stock")
+	private List<StockDetails> stockDetail;
+	
 	public int getId() {
 		return id;
 	}
@@ -64,8 +71,5 @@ public class Stock {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-		
-	
 
 }

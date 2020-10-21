@@ -45,32 +45,33 @@ public class StockController {
 	}
 
 	@GetMapping("/getByPriceBetween/{startPrice}/{endPrice}")
-	public ResponseEntity<Object> getByPriceBetween(@PathVariable double startPrice,@PathVariable double endPrice) {
+	public ResponseEntity<Object> getByPriceBetween(@PathVariable double startPrice, @PathVariable double endPrice) {
 		return new ResponseEntity<>(stockService.findByPriceBetween(startPrice, endPrice), HttpStatus.OK);
 	}
 
 	@GetMapping("/getByVolumeBetween/{startVolume}/{endVolume}")
-	public ResponseEntity<Object> getByVolumeBetween(@PathVariable int startVolume,@PathVariable int endVolume) {
+	public ResponseEntity<Object> getByVolumeBetween(@PathVariable int startVolume, @PathVariable int endVolume) {
 		return new ResponseEntity<>(stockService.findByVolumeBetween(startVolume, endVolume), HttpStatus.OK);
 	}
 
 	@GetMapping("/getByDateBetween/{startDate}/{endDate}")
-	public ResponseEntity<Object> getByDateBetween(@PathVariable("startDate") Date startDate, @PathVariable("endDate") Date endDate) {
-		return new ResponseEntity<>(stockService.findByDateBetween(startDate,endDate),HttpStatus.OK);
+	public ResponseEntity<Object> getByDateBetween(@PathVariable("startDate") Date startDate,
+			@PathVariable("endDate") Date endDate) {
+		return new ResponseEntity<>(stockService.findByDateBetween(startDate, endDate), HttpStatus.OK);
 	}
 
 	@GetMapping("/getTopFiveStock")
 	public ResponseEntity<Object> getTopFiveStock() {
 		return new ResponseEntity<>(stockService.findTopFiveStockByPrice(), HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/updateStock")
-	public ResponseEntity<Object> updateStock(@RequestBody Stock stock){
+	public ResponseEntity<Object> updateStock(@RequestBody Stock stock) {
 		Stock s = stockService.updateStock(stock);
-		if(s!= null)
-			return new ResponseEntity<>(stock,HttpStatus.OK);
+		if (s != null)
+			return new ResponseEntity<>(stock, HttpStatus.OK);
 		else
-			return new ResponseEntity<>("Not Found",HttpStatus.OK);
+			return new ResponseEntity<>("Not Found", HttpStatus.OK);
 	}
 
 	@DeleteMapping("/deleteById/{id}")
@@ -82,5 +83,15 @@ public class StockController {
 			stockService.deleteEmployee(id);
 			return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
 		}
+	}
+
+	@GetMapping("/searchByCompName/{compName}")
+	public ResponseEntity<Object> searchStock(@PathVariable String compName) {
+		return new ResponseEntity<>(stockService.searchByCompName(compName), HttpStatus.OK);
+	}
+	
+	@GetMapping("/listByCompRank")
+	public ResponseEntity<Object> listByCompRank() {
+		return new ResponseEntity<>(stockService.listByCompRanking(), HttpStatus.OK);
 	}
 }

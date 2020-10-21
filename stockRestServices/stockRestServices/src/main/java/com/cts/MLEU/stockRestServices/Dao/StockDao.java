@@ -18,7 +18,12 @@ public interface StockDao extends JpaRepository<Stock, Integer> {
 
 	List<Stock> findByDateBetween(Date startDate, Date endDate);
 	
-	@Query(value="select name from stock order by price",nativeQuery = true)
+	@Query(value="select s.* from stock s order by price limit 5",nativeQuery = true)
 	List<Stock> findTopFiveStockByPrice();
-
+	
+	@Query(value="select s.* from stock s inner join stock_details sd on s.id = sd.stock where sd.comp_name = ?1 ",nativeQuery = true)
+	List<Stock> searchByCompName(String compName);
+	
+	@Query(value="select s.*,sd.* from stock s inner join stock_details sd on s.id = sd.stock order by comp_rank desc",nativeQuery = true)
+	List<Stock> listByCompRanking();
 }
