@@ -7,19 +7,19 @@ import com.cts.MLEU.stockRestServices.Model.Stock;
 
 
 public interface StockService {
-	
-	public List<Stock> getAllStock();
+	 
+	public List<Stock> getAllStock();  // test
 	
 	public Stock getStockById(int id);
 	
-	public Stock addStock(Stock stock);
+	public Stock addStock(Stock stock); // test
 	
 	public Stock updateStock(Stock stock);
 	
-	public void deleteEmployee(int id);
+	public void deleteStock(int id); // test
 
 	
-	List<Stock> findByName(String stock_name);
+	List<Stock> findByName(String stock_name); // test
 	
 	List<Stock> findByPriceBetween(double startPrice,double endPrice);
 	

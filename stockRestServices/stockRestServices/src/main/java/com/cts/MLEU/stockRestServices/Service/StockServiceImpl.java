@@ -70,7 +70,7 @@ public class StockServiceImpl implements StockService{
 	
 
 	@Override
-	public void deleteEmployee(int id) {
+	public void deleteStock(int id) {
 		// TODO Auto-generated method stub
 		stockDao.deleteById(id);
 	}

@@ -80,7 +80,7 @@ public class StockController {
 		if (stock == null)
 			return new ResponseEntity<>("Stock Not Found", HttpStatus.OK);
 		else {
-			stockService.deleteEmployee(id);
+			stockService.deleteStock(id);
 			return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
 		}
 	}
