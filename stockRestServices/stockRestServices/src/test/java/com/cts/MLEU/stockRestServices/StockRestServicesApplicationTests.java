@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Date;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,38 +30,59 @@ class StockRestServicesApplicationTests {
 
 	@Autowired
 	StockService stockImpl;
-	
+
 	// Testing all Stock Details Service
 	@Test
 	public void getAllStockTest() {
-		when(stockDao.findAll()).thenReturn(Stream.of(new Stock(101,"CTS",123.24,150,new Date(2020-01-01))).collect(Collectors.toList()));
-		
+		when(stockDao.findAll()).thenReturn(
+				Stream.of(new Stock(101, "CTS", 123.24, 150, new Date(2020 - 01 - 01))).collect(Collectors.toList()));
+
 		assertEquals(1, stockImpl.getAllStock().size());
 	}
-	
+
 	// Testing Get Stock By Name Service
 	@Test
 	public void getStockByNameTest() {
 		String name = "";
-		when(stockDao.findByName(name))
-			.thenReturn(Stream.of(new Stock(101,"CTS",123.24,150,new Date(2020-01-01))).collect(Collectors.toList()));
-		
+		when(stockDao.findByName(name)).thenReturn(
+				Stream.of(new Stock(101, "CTS", 123.24, 150, new Date(2020 - 01 - 01))).collect(Collectors.toList()));
+
 		assertEquals(1, stockImpl.findByName(name).size());
 	}
-	
+
+	// Testing Add Stock Service
 	@Test
 	public void addStockTest() {
-		Stock stock = new Stock(101,"CTS",123.24,150,new Date(2020-01-01));
+		Stock stock = new Stock(101, "CTS", 123.24, 150, new Date(2020 - 01 - 01));
 		when(stockDao.save(stock)).thenReturn(stock);
 		assertEquals(stock, stockImpl.addStock(stock));
 	}
 
+	// Testing Delete Stock Service
 	@Test
 	public void deleteStockTest() {
 		int id = 101;
-		Stock stock = new Stock(101,"CTS",123.24,150,new Date(2020-01-01));
+		Stock stock = new Stock(101, "CTS", 123.24, 150, new Date(2020 - 01 - 01));
 		stockImpl.deleteStock(id);
-		verify(stockDao,times(1)).deleteById(id);
+		verify(stockDao, times(1)).deleteById(id);
+	}
+
+	// Testing Get Stock By Id
+	@Test
+	public void getStockByIdTest() {
+		int id = 101;
+		Stock stock = new Stock(101, "CTS", 123.24, 150, new Date(2020 - 01 - 01));
+		when(stockDao.findById(id)).thenReturn(Optional.of(stock));
+		assertEquals(stock, stockImpl.getStockById(id));
+	}
+
+	// Testing Price Between
+	@Test
+	public void findByPriceBetweenTest() {
+		double startPrice = 100, endPrice = 200;
+		Stock stock = new Stock(101,"CTS",123.24,150,new Date(2020-01-01));
+		when(stockDao.findByPriceBetween(startPrice, endPrice)).thenReturn(Stream.of(new Stock(101,"CTS",123.24,150,new Date(2020-01-01))).collect(Collectors.toList()));
+		
 	}
 
 }
